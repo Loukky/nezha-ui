@@ -5,13 +5,13 @@
 
 /* 自定义字体 */
 :root,* {
-  font-family: "Roboto","Noto Sans SC","Noto Sans JP","Noto Sans KR","Noto Color Emoji",sans-serif !important;
+  font-family: "Roboto","Noto Sans SC","Noto Sans JP","Noto Sans KR","Noto Color Emoji",sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
  button, input, optgroup, select, textarea,.bg-background .grid .bg-card, .bg-background .grid .bg-card, .bg-background .server-info .bg-card, .bg-background .server-info .bg-card,h1,h2,h3,h4,h5{
-font-family: "Roboto","Noto Sans SC", "Noto Sans JP","Noto Sans KR","Noto Color Emoji",sans-serif !important;
+font-family: "Roboto","Noto Sans SC", "Noto Sans JP","Noto Sans KR","Noto Color Emoji",sans-serif;
 }
 
 /* 隐藏底部页脚 */
