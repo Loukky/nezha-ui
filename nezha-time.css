@@ -4,7 +4,7 @@
  */
 
 /* 自定义字体 */
-:root,* {
+:root {
   font-family: "Roboto","Noto Sans SC","Noto Sans JP","Noto Sans KR","Noto Color Emoji",sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
