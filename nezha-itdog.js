@@ -101,6 +101,22 @@
         return a;
     }
 
+        // ---------- 创建 GeoIP 查询按钮 ----------
+    function createGeoIPButton(token){
+        const a = document.createElement('a');
+        a.className = 'nezha-ping-btn';
+        a.textContent = 'GeoIP';
+
+        // 去掉 IPv6 的方括号（如果有）
+        const ip = token.replace(/^\[|\](?::\d+)?$/g, '').replace(/:\d+$/, '');
+
+        a.href = `https://geoip.loukky.com/?ip=${encodeURIComponent(ip)}`;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+
+        return a;
+    }
+
     // ---------- 在单元格插入按钮 ----------
     function appendButtons(cell){
         if(!cell) return;
@@ -116,14 +132,17 @@
         wrap.className = 'nezha-ping-wrap';
 
         v4.forEach(tok => {
-            const hasPort = /:\d+$/.test(tok); // IPv4: 末尾 :digits
+            const hasPort = /:\d+$/.test(tok);
+
             wrap.appendChild(createButton(tok, true, hasPort));
+            wrap.appendChild(createGeoIPButton(tok));
         });
 
         v6.forEach(tok => {
-            // 仅当为带方括号并带端口的形式视为明确带端口
             const hasPort = /^\[[0-9a-fA-F:]+\]:\d+$/.test(tok);
+
             wrap.appendChild(createButton(tok, false, hasPort));
+            wrap.appendChild(createGeoIPButton(tok));
         });
 
         if (wrap.children.length > 0) {
