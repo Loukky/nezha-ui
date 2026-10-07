@@ -114,13 +114,21 @@ function parseIPs(text){
         a.className = 'nezha-ping-btn';
         a.textContent = 'GeoIP';
 
-        // 去掉 IPv6 的方括号（如果有）
-        const ip = token.replace(/^\[|\](?::\d+)?$/g, '').replace(/:\d+$/, '');
+        let ip = token;
+
+        // 带方括号的 IPv6（可带端口）：[2001:db8::1] 或 [2001:db8::1]:443
+        if (/^\[[0-9a-fA-F:]+\](?::\d+)?$/.test(ip)) {
+            ip = ip.replace(/^\[|\](?::\d+)?$/g, '');
+        }
+        // 纯 IPv4 带端口：1.2.3.4:80
+        else if (/^(?:\d{1,3}\.){3}\d{1,3}:\d+$/.test(ip)) {
+            ip = ip.replace(/:\d+$/, '');
+        }
+        // 普通 IPv6（不含方括号）——原样使用，绝不截断
 
         a.href = `https://geoip.loukky.com/?ip=${encodeURIComponent(ip)}`;
         a.target = '_blank';
         a.rel = 'noopener noreferrer';
-
         return a;
     }
 
