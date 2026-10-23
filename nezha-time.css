@@ -1,104 +1,96 @@
+
 /**
  * Custom Theme Styles
- * 使用方法：<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ziwiwiz/nezha-ui@main/nezha-time.css">
+ * 使用方法：https://cdn.jsdelivr.net/gh/Loukky/nezha-ui@main/nezha-time.css
  */
 
 /* 自定义字体 */
 :root {
-  font-family: "Noto Sans SC","Noto Sans KR","Noto Color Emoji",sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Noto Sans SC", "Noto Sans KR", "Noto Color Emoji", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
- button, input, optgroup, select, textarea,.bg-background .grid .bg-card, .bg-background .grid .bg-card, .bg-background .server-info .bg-card, .bg-background .server-info .bg-card,h1,h2,h3,h4,h5{
-font-family: "Noto Sans SC", "Noto Sans KR","Noto Color Emoji",sans-serif;
+
+button,
+input,
+optgroup,
+select,
+textarea,
+.bg-background .grid .bg-card,
+.bg-background .server-info .bg-card,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Noto Sans SC", "Noto Sans KR", "Noto Color Emoji", sans-serif;
 }
 
 /* 隐藏底部页脚 */
-/*footer {
+/*
+footer {
     display: none;
-}*/
+}
+*/
 
-/***************************************
- * 1. 隐藏"当前时间"文字
- ***************************************/
-p.text-base.font-semibold,
-/* overview */
-p.text-sm.font-medium.opacity-50 {
-    /* where the time is */
+/* 隐藏概览标题和当前时间文字 */
+.header-timer > p.text-base.font-semibold,
+.header-timer > div.flex.items-center.gap-1 > p.text-sm.font-medium.opacity-50 {
     display: none !important;
 }
 
-/***************************************
- * 2. 时间数字（低发光、清晰）
- ***************************************/
-[data-issues-count-animation] {
-    font-size: 3rem !important;
+/* 时间数字 */
+.header-timer .tabular-nums {
+    display: inline-block !important;
+    min-width: 1.2ch !important;
     height: auto !important;
+    font-size: 3rem !important;
     line-height: 1 !important;
     font-weight: 600 !important;
-
-    display: inline-flex !important;
-    justify-content: center !important;
-    align-items: baseline !important;
+    text-align: center !important;
     vertical-align: middle !important;
+    font-variant-numeric: tabular-nums;
 
-    /* 低发光毛玻璃 */
     color: rgba(255, 255, 255, 0.75) !important;
     text-shadow:
         0 0 2px rgba(255, 255, 255, 0.35),
         0 0 6px rgba(255, 255, 255, 0.18);
 }
 
-/***************************************
- * 3. 单个数字等宽居中（防抖）
- ***************************************/
-[data-issues-count-animation]>div {
-    display: inline-block !important;
-    min-width: 1.2ch !important;
-    text-align: center !important;
-}
-
-/***************************************
- * 4. 冒号（更弱一级）
- ***************************************/
-span.font-medium.text-sm.opacity-50 {
+/* 冒号 */
+.header-timer span.mb-px.font-medium.text-sm.opacity-50 {
     font-size: 2.8rem !important;
     line-height: 1 !important;
     vertical-align: middle !important;
     margin: 0 0.25ch !important;
 
     color: rgba(255, 255, 255, 0.55) !important;
-    text-shadow:
-        0 0 2px rgba(255, 255, 255, 0.22);
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.22);
 }
 
-/***************************************
- * 5. 移除 Tailwind 像素补偿
- ***************************************/
-span.mb-px {
+/* 移除 Tailwind 像素补偿 */
+.header-timer span.mb-px {
     margin-bottom: 0 !important;
 }
 
-/***************************************
- * 6. 行高度兜底
- ***************************************/
-.flex.items-center.font-medium.text-sm {
+/* 时间行高度与对齐 */
+.header-timer div.flex.items-center.font-medium.text-sm {
     min-height: 3.2rem !important;
     align-items: center !important;
 }
 
-/* 不显示右上角语言切换按钮 */
+/* 隐藏右上角语言切换按钮 */
 [id="radix-:r0:"] {
-    display: none;
+    display: none !important;
 }
 
-/* 不显示右上角主题切换按钮 */
+/* 隐藏右上角主题切换按钮 */
 [id="radix-:r2:"] {
-    display: none;
+    display: none !important;
 }
 
-/* 不显示右下角的图片按钮 */
+/* 隐藏右下角图片按钮 */
 button:has(.lucide-image-minus) {
     display: none !important;
 }
